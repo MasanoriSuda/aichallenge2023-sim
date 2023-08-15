@@ -26,11 +26,11 @@
 
       # avoidance is performed for the object type with true
       target_object:
-        car: true
-        truck: true
-        bus: true
-        trailer: true
-        unknown: false
+        car: false
+        truck: false
+        bus: false
+        trailer: false
+        unknown: true
         bicycle: false
         motorcycle: false
         pedestrian: false

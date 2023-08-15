@@ -498,7 +498,11 @@
           <push-ros-namespace namespace="behavior_planning"/>
 
           <!-- behavior_planning_container -->
-          <node_container pkg="rclcpp_components" exec="component_container" name="behavior_planning_container" namespace="">
+          <include file="$(find-pkg-share rtc_auto_mode_manager)/launch/rtc_auto_mode_manager.launch.xml">
+             <arg name="param_path" value="$(find-pkg-share autoware_launch)/config/planning/scenario_planning/lane_driving/behavior_planning/rtc_auto_mode_manager/rtc_auto_mode_manager.param.yaml"/>
+          </include>
+
+          <node_container pkg="rclcpp_components" exec="component_container" name="behavior_planning_container" namespace="" ros_args="--log-level INFO">
 
             <!-- behavior_path_planner::BehaviorPathPlannerNode -->
             <composable_node pkg="behavior_path_planner" plugin="behavior_path_planner::BehaviorPathPlannerNode" name="behavior_path_planner" namespace="">
@@ -614,7 +618,7 @@
           </node_container> <!-- motion_planning_container -->
 
         </group> <!-- motion_planning -->
-
+        
       </group> <!-- lane_driving -->
 
     </group>
@@ -641,6 +645,13 @@
 
     <!-- ad_api_adaptors -->
     <include file="$(find-pkg-share ad_api_adaptors)/launch/rviz_adaptors.launch.xml" />
+  </group>
+
+  <group>
+    <push-ros-namespace namespace="autoware_api/external/rtc_controller"/>
+    <node_container pkg="rclcpp_components" exec="component_container_mt" name="container" namespace="" ros_args="--log-level autoware_api.external.rtc_controller.container:=warn">
+      <composable_node pkg="autoware_iv_external_api_adaptor" plugin="external_api::RTCController" name="node"/>
+    </node_container>
   </group>
 
   <!-- Rviz2 -->
