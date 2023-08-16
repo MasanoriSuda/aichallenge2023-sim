@@ -619,6 +619,10 @@
 
         </group> <!-- motion_planning -->
         
+        <group>
+          <node pkg="path_subscriber" exec="path_subscriber"/>
+        </group> <!-- Path Subscriber -->
+
       </group> <!-- lane_driving -->
 
     </group>
