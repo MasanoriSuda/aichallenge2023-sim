@@ -47,7 +47,7 @@
 
       weight:
         smooth_weight: 1.0
-        lat_error_weight: 0.001
+        lat_error_weight: 0.01
 
       qp:
         max_iteration: 10000  # max iteration when solving QP
@@ -89,11 +89,11 @@
         soft_collision_free_weight: 1000.0        # soft weight for lateral error around the middle point
 
         # tracking error
-        lat_error_weight: 1.0       # weight for lateral error
-        yaw_error_weight: 0.0       # weight for yaw error
-        yaw_error_rate_weight: 0.0  # weight for yaw error rate
-        steer_input_weight: 1.0     # weight for steering input
-        steer_rate_weight: 1.0      # weight for steering rate
+        lat_error_weight: 10.0       # weight for lateral error
+        yaw_error_weight: 1.0       # weight for yaw error
+        yaw_error_rate_weight: 1.0  # weight for yaw error rate
+        steer_input_weight: 0.1     # weight for steering input
+        steer_rate_weight: 0.1      # weight for steering rate
 
         terminal_lat_error_weight: 100.0  # weight for lateral error at terminal point
         terminal_yaw_error_weight: 100.0  # weight for yaw error at terminal point
